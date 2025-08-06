@@ -73,14 +73,13 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
    ```sql
      SELECT * FROM spotify
     WHERE stream>1000000000
-```
+   ```
 
 2. List all albums along with their respective artists
-.
-```sql
-SELECT DISTINCT artist, album
-FROM spotify
-ORDER BY 1;
+.```sql
+     SELECT DISTINCT artist, album
+     FROM spotify
+     ORDER BY 1;
 ```
 3. Get the total number of comments for tracks where `licensed = TRUE`.
    ```sql
