@@ -101,11 +101,9 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
    ```sql
   SELECT album,avg(danceability)FROM spotify
   GROUP BY album;
-
-
-   ```
+```
 2. Find the top 5 tracks with the highest energy values.
-   ```sql
+```sql
  SELECT * FROM(
 SELECT track , energy,DENSE_RANK() OVER(order by energy DESC) as rnk FROM spotify)A
 WHERE rnk<6
@@ -139,7 +137,24 @@ limit 5
 
 ### Advanced Level
 1. Find the top 3 most-viewed tracks for each artist using window functions.
+```sql
+ SELECT * FROM spotify;
+
+WITH CTE AS
+(SELECT artist,track,sum(views)as most_viewed FROM spotify
+GROUP BY 1,2 ),
+
+CTE1 AS(SELECT *,DENSE_RANK()OVER(PARTITION BY artist ORDER BY most_viewed DESC)as rnk FROM CTE)
+
+SELECT * FROM CTE1 WHERE rnk<=3
+```
 2. Write a query to find tracks where the liveness score is above the average.
+ ```sql
+ SELECT avg(liveness) from spotify--0.19
+
+SELECT * FROM spotify
+WHERE liveness>(SELECT avg(liveness) from spotify)
+```
 3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql
 WITH cte
