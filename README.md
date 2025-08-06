@@ -4,7 +4,7 @@ Project Category: Advanced
 [Click Here to get Dataset](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
 
 
-![spotify_logo](https://github.com/user-attachments/assets/75ce7efb-9527-4ee9-ad36-dfc610a5e550)
+https://github.com/GuruprabhuSK/Spotify_project/blob/f9f97740facdaf0cffc9f40632c06068d561ab79/spotify_logo.jpg
 
 
 
