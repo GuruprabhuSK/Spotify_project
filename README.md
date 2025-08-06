@@ -98,10 +98,11 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
-   ```sql
-  SELECT album,avg(danceability)FROM spotify
+ ```sql
+   SELECT album,avg(danceability)FROM spotify
   GROUP BY album;
 ```
+
 2. Find the top 5 tracks with the highest energy values.
 ```sql
  SELECT * FROM(
