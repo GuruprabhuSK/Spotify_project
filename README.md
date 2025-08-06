@@ -138,20 +138,24 @@ limit 5
 ```
 
 
+### Advanced Level
 
-  ### Advanced Level
- 1. Find the top 3 most-viewed tracks for each artist using window functions.
-  ```sql
+1. Find the top 3 most-viewed tracks for each artist using window functions.
 
-    SELECT * FROM spotify;
+```sql
+WITH CTE AS (
+  SELECT artist, track, SUM(views) AS most_viewed
+  FROM spotify
+  GROUP BY 1, 2
+),
+CTE1 AS (
+  SELECT *,
+         DENSE_RANK() OVER (PARTITION BY artist ORDER BY most_viewed DESC) AS rnk
+  FROM CTE
+)
 
-     WITH CTE AS
-      (SELECT artist,track,sum(views)as most_viewed FROM spotify
-         GROUP BY 1,2 ),
-
-        CTE1 AS(SELECT *,DENSE_RANK()OVER(PARTITION BY artist ORDER BY most_viewed DESC)as rnk FROM CTE)
-
-        SELECT * FROM CTE1 WHERE rnk<=3
+SELECT * FROM CTE1
+WHERE rnk <= 3;
 ```
 
 2. Write a query to find tracks where the liveness score is above the average.
