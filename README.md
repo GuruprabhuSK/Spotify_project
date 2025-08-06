@@ -76,11 +76,12 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
    ```
 
 2. List all albums along with their respective artists
-.```sql
+    ```sql
      SELECT DISTINCT artist, album
      FROM spotify
      ORDER BY 1;
-```
+   ```
+   
 3. Get the total number of comments for tracks where `licensed = TRUE`.
    ```sql
    SELECT SUM(comments) as total_comments  FROM spotify WHERE licensed=TRUE;
