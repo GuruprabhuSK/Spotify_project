@@ -141,8 +141,8 @@ limit 5
 
 ### Advanced Level
  1. Find the top 3 most-viewed tracks for each artist using window functions.
-
  ```sql
+
     SELECT * FROM spotify;
 
      WITH CTE AS
